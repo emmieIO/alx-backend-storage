@@ -1,3 +1,2 @@
-use admin
-
-db.adminCommand({ listDatabases: 1, nameOnly: true })
+# lists all the mongo databases
+show dbs
