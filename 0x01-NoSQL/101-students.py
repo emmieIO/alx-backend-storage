@@ -19,17 +19,20 @@ def top_students(mongo_collection):
     """
     pipeline = [
         {
-          "$unwind": "$scores"
+            '$project': {
+                '_id': 1,
+                'name': 1,
+                'averageScore': {
+                    '$avg': {
+                    '$avg': '$topics.score',
+                    },
+                },
+                'topics': 1,
+            },
         },
         {
-          "$group": {
-              "_id": "$_id",
-              "averageScore": {"$avg": "$scores.score"}
-            }
+            '$sort': {'averageScore': -1},
         },
-        {
-          "$sort": {"averageScore": -1}
-        }
     ]
 
     aggregation = AggregationPipeline(pipeline)
