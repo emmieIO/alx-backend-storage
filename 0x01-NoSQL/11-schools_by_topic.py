@@ -17,9 +17,5 @@ def schools_by_topic(mongo_collection, topic):
         matching school documents.
     """
 
-    pipeline = [
-        {"$match": {"topics": {"$in": [topic]}}},
-    ]
-
-    schools = list(mongo_collection.aggregate(pipeline))
+    schools = mongo_collection.find({"topics" : topic})
     return schools
