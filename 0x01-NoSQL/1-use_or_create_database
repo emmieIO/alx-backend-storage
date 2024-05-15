@@ -1,0 +1,8 @@
+// Switch to the "my_db" database (creates it if it doesn't exist)
+use my_db
+
+// Insert a sample document (can be any valid JSON data)
+db.my_collection.insertOne({ name: "Sample Document" })
+
+// Verify the database is now listed
+show dbs
