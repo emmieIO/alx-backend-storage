@@ -32,8 +32,8 @@ def count_by_method(collection, methods):
     """Counts documents for each method in the provided list."""
     method_counts = {}
     for method in methods:
-      count = collection.count_documents({"method": method})
-      method_counts[method] = count
+        count = collection.count_documents({"method": method})
+        method_counts[method] = count
     return method_counts
 
 
@@ -53,8 +53,8 @@ def print_stats(total_count, method_counts, status_count):
 
 
 if __name__ == "__main__":
-  collection = connect_to_mongo()
-  total_count = count_documents(collection)
-  method_counts = count_by_method(collection, METHODS)
-  status_count = count_status_check(collection, STATUS_PATH)
-  print_stats(total_count, method_counts, status_count)
+    collection = connect_to_mongo()
+    total_count = count_documents(collection)
+    method_counts = count_by_method(collection, METHODS)
+    status_count = count_status_check(collection, STATUS_PATH)
+    print_stats(total_count, method_counts, status_count)
