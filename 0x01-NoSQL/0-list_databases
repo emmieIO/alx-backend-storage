@@ -7,9 +7,8 @@ from pymongo import MongoClient
 client = MongoClient('mongodb://localhost:27017/')
 
 # List all databases
-db_names = client.list_database_names()
+db_info = client.admin.command('listDatabases')
 
 # Print the list of databases
-print("Databases:")
-for db_name in db_names:
-    print(db_name)
+for db in db_info['databases']:
+    print(db['name'], "\t", db['sizeOnDisk'])
