@@ -19,7 +19,6 @@ def schools_by_topic(mongo_collection, topic):
 
     pipeline = [
         {"$match": {"topics": {"$in": [topic]}}},
-        {"$project": {"_id": 0, "name": 1}}
     ]
 
     schools = list(mongo_collection.aggregate(pipeline))
